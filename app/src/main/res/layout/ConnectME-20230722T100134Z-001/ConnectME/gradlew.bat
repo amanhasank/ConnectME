@@ -13,7 +13,6 @@
 @rem See the License for the specific language governing permissions and
 @rem limitations under the License.
 @rem
-java --add-opens java.base/java.io=ALL-UNNAMED -jar ...
 
 @if "%DEBUG%" == "" @echo off
 @rem ##########################################################################

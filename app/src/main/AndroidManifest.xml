@@ -11,15 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ConnectME"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.Splash">
+        <activity android:name=".Activities.Splash"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Activities.ChatActivity" />
-        <activity android:name=".Activities.ProfileSetup" />
+        <activity android:name=".Activities.EditProfile" />
         <activity
             android:name=".Activities.PhoneNumberVerify"
             android:windowSoftInputMode="stateVisible" />

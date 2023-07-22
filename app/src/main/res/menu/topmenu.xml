@@ -15,5 +15,5 @@
         android:title="Invite" />
     <item
         android:id="@+id/setting"
-        android:title="Settings" />
+        android:title="Edit Profile" />
 </menu>

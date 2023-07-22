@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="2dp"
     android:layout_marginBottom="2dp"
-    tools:context=".Activities.ProfileSetup">
+    tools:context=".Activities.ProfileUpdate">
 
     <TextView
         android:id="@+id/textView"
@@ -31,7 +31,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Enter Your Name"
+        android:text="Enter Your Updated Name"
         android:textColor="#090808"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/orange"
-                android:text="Setup Profile"
+                android:text="Update Profile"
                 android:textColor="#0E0E0E" />
 
         </LinearLayout>

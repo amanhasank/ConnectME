@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
 
+    <EditText
+        android:id="@+id/userSearchName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:visibility="gone"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.cooltechworks.views.shimmer.ShimmerRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -16,7 +30,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/statusList"
         tools:listitem="@layout/row_chat"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
 
 
         app:shimmer_demo_child_count="10"
@@ -33,14 +46,14 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
 
+        app:layout_constraintTop_toBottomOf="@+id/userSearchName"
+        app:shimmer_demo_angle="20"
         app:shimmer_demo_child_count="10"
         app:shimmer_demo_grid_child_count="2"
         app:shimmer_demo_layout="@layout/chats_loading"
-        app:shimmer_demo_layout_manager_type="linear_horizontal"
-        app:shimmer_demo_angle="20">
+        app:shimmer_demo_layout_manager_type="linear_horizontal">
 
     </com.cooltechworks.views.shimmer.ShimmerRecyclerView>
 
@@ -63,6 +76,7 @@
         app:elevation="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

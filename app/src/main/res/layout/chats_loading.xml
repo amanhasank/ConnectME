@@ -8,8 +8,10 @@
 
     <View
         android:id="@+id/view3"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="4dp"
         android:background="#CDC0C0"
         tools:ignore="MissingConstraints" />
 

@@ -1,9 +1,24 @@
 package com.example.connectme.Models;
 
-public class Message {
-    private String messageId, message, senderId;
+import com.example.connectme.Activities.ChatActivity;
+
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.spec.SecretKeySpec;
+
+
+public class Message  {
+
+
+
+    private String messageId, message, senderId, imageURL;
     private long timetamp;
     private int feeling;
+
 
     public Message() {
     }
@@ -13,6 +28,14 @@ public class Message {
         this.senderId = senderId;
         this.timetamp = timetamp;
 
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public String getMessageId() {
@@ -54,4 +77,9 @@ public class Message {
     public void setFeeling(int feeling) {
         this.feeling = feeling;
     }
+
+
+
+
 }
+

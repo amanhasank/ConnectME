@@ -275,7 +275,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.setting:
-                Toast.makeText(this, "Feature Coming Soon.", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this, "Feature Coming Soon.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, EditProfile.class);
+                startActivity(intent);
                 break;
             case R.id.groups:
 
@@ -298,11 +300,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                         }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                }).show();
+                            }
+                        }).show();
                 statusAdapter.notifyDataSetChanged();
                 break;
 

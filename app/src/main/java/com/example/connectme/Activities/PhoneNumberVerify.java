@@ -2,6 +2,7 @@ package com.example.connectme.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.connectme.databinding.ActivityPhoneNumberVerifyBinding;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,7 +12,6 @@ import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.example.connectme.databinding.ActivityPhoneNumberVerifyBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
