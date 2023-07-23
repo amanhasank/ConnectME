@@ -2,8 +2,10 @@ plugins {
     id 'com.android.application'
 }
 apply plugin: 'com.google.gms.google-services'
+
 android {
-    compileSdkVersion 30
+    namespace 'com.example.namespace'
+    compileSdkVersion 34
     buildToolsVersion "30.0.3"
 
     buildFeatures {
@@ -42,16 +44,22 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+
+    implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
+
+    // Add the dependency for the Firebase Authentication library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-auth")
+
 
 
     implementation 'com.github.aabhasr1:OtpView:v1.1.2'
-    implementation platform('com.google.firebase:firebase-bom:26.4.0')
+    implementation platform('com.google.firebase:firebase-bom:32.2.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
 
     implementation 'com.google.firebase:firebase-storage'
-    implementation "androidx.browser:browser:1.2.0"
+    implementation "androidx.browser:browser:1.5.0"
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.devlomi:circularstatusview:1.0.1'

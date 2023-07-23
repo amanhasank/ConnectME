@@ -33,6 +33,7 @@ public class ProfileSetup extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         binding = ActivityProfileSetupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -117,6 +118,7 @@ public class ProfileSetup extends AppCompatActivity {
                                                     public void onSuccess(Void aVoid) {
                                                         dialog.dismiss();
                                                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+
                                                         startActivity(intent);
                                                         finishAffinity();
                                                     }
