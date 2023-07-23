@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.connectme.R;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -27,6 +28,7 @@ import com.example.connectme.Models.Status;
 import com.example.connectme.Models.User;
 import com.example.connectme.Models.UserStatus;
 import com.example.connectme.R;
+
 import com.example.connectme.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;

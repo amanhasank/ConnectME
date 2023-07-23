@@ -1,26 +1,24 @@
 package com.example.connectme.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.example.connectme.Adapters.MessagesAdapter;
 import com.example.connectme.Models.Message;
+
 import com.example.connectme.R;
 import com.example.connectme.databinding.ActivityChatBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,7 +36,6 @@ import com.google.firebase.storage.UploadTask;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLTransactionRollbackException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
