@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -107,10 +108,20 @@ public class PhoneNumberVerify extends AppCompatActivity {
                         //Toast.makeText(PhoneNumberVerify.this, "Entered into onComplete", Toast.LENGTH_SHORT).show();
                         if(task.isSuccessful()){
 
-                          //  Toast.makeText(PhoneNumberVerify.this, "Login Sucessfull", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), ProfileSetup.class);
-                            startActivity(intent);
-                            finishAffinity();
+                            FirebaseUser user = task.getResult().getUser();
+                            long creationTime = user.getMetadata().getCreationTimestamp();
+                            long lastsigninTime = user.getMetadata().getLastSignInTimestamp();
+                            if(creationTime == lastsigninTime) {
+                                Intent intent = new Intent(getApplicationContext(), ProfileSetup.class);
+                                startActivity(intent);
+                                finishAffinity();
+                            }
+                            else{
+
+                                Intent intent = new Intent(getApplicationContext(), ProfileSetup.class);
+                                startActivity(intent);
+                                finishAffinity();
+                            }
 
                         }
                         else {
@@ -124,5 +135,6 @@ public class PhoneNumberVerify extends AppCompatActivity {
         });
 
     }
+
 
 }

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.connectme">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/bigicon"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-
         android:supportsRtl="true"
         android:theme="@style/Theme.ConnectME"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
+=======
+        <activity android:name=".Activities.ProfileUpdate"></activity>
+>>>>>>> 5a98a3293002c9939d03e7536168000b278e84a9
         <activity android:name=".Activities.Splash"
             android:exported="true">
             <intent-filter>
@@ -19,16 +21,21 @@
             </intent-filter>
         </activity>
 
+<<<<<<< HEAD
         <activity android:name=".Activities.ChatActivity" />
         <activity android:name=".Activities.EditProfile" />
+=======
+        <activity
+            android:name=".Activities.ChatActivity"
+            android:theme="@style/Theme.ConnectME.NoActionBar" />
+        <activity android:name=".Activities.ProfileSetup" />
+>>>>>>> 5a98a3293002c9939d03e7536168000b278e84a9
         <activity
             android:name=".Activities.PhoneNumberVerify"
             android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".Activities.PhoneNumberActivity"
-            android:windowSoftInputMode="stateVisible">
-
-        </activity>
+            android:windowSoftInputMode="stateVisible"></activity>
         <activity android:name=".Activities.MainActivity" />
     </application>
 

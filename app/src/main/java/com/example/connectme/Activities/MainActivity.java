@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.connectme.R;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -14,6 +15,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,17 +27,20 @@ import com.example.connectme.Adapters.UsersAdapter;
 import com.example.connectme.Models.Status;
 import com.example.connectme.Models.User;
 import com.example.connectme.Models.UserStatus;
-import com.example.connectme.R;
+
+
 import com.example.connectme.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -57,12 +63,15 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog dialog;
 
     User user;
+    String meraNaam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+         meraNaam = getIntent().getStringExtra("username");
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Uploading Image...");
@@ -96,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.recyclerView.setAdapter(usersAdapter);
 
-        binding.recyclerView.showShimmerAdapter();
+       binding.recyclerView.showShimmerAdapter();
         //binding.statusList.showShimmerAdapter();
 
         database.getReference().child("users").addValueEventListener(new ValueEventListener() {
@@ -118,49 +127,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-  /*
-        binding.statusList.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
 
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Do You Want To Delete Status?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                database.getReference().child("stories").addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        if(snapshot.exists()) {
-                                            for (DataSnapshot storySnapshot : snapshot.getChildren()) {
 
-                                                for (DataSnapshot statusSnapshot : storySnapshot.child("statuses").getChildren()) {
-                                                    Status sampleStatus = statusSnapshot.getValue(Status.class);
-                                                    statuses.add(sampleStatus);
-                                                }
-                                            }
-                                        }
 
-                                Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
-                            }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-
-                                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                }).show();
-
-                userStatuses.remove(v);
-
-                return false;
-            }
-        }); */
 
         database.getReference().child("stories").addValueEventListener(new ValueEventListener() {
             @Override
@@ -198,20 +167,38 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.calls:
-                        Toast.makeText(MainActivity.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.status:
-                        Intent intent = new Intent();
-                        intent.setType("image/*");
-                        intent.setAction(Intent.ACTION_GET_CONTENT);
-                        startActivityForResult(intent, 75);
-                        break;
+                int itemId = item.getItemId();
+
+                if (itemId == R.id.calls) {
+                    Toast.makeText(MainActivity.this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
+                } else if (itemId == R.id.status) {
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(intent, 75);
                 }
+
                 return false;
             }
         });
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        String currentID = FirebaseAuth.getInstance().getUid();
+        database.getReference().child("presence").child(currentID).setValue("Online");
+        super.onResume();
+    }
+
+
+
+    @Override
+    protected void onPause() {
+        String currentID = FirebaseAuth.getInstance().getUid();
+        database.getReference().child("presence").child(currentID).setValue("Offline");
+        super.onPause();
 
     }
 
@@ -269,6 +256,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+<<<<<<< HEAD
         switch (item.getItemId()) {
             case R.id.search:
             case R.id.invite:
@@ -280,25 +268,48 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.groups:
+=======
+        int itemId = item.getItemId();
+        if (itemId == R.id.search) {
+            Toast.makeText(this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
+>>>>>>> 5a98a3293002c9939d03e7536168000b278e84a9
 
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Do You Want To Delete Status?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                database.getReference().child("stories")
-                                        .child(FirebaseAuth.getInstance().getUid()).removeValue();
-
-                                statusAdapter.notifyDataSetChanged();
-
-
-                                Toast.makeText(MainActivity.this, "Status Deleted", Toast.LENGTH_SHORT).show();
-                                statusAdapter.notifyDataSetChanged();
-                            }
+        }
+        if (itemId == R.id.invite) {
+            //Sending Link
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "https://drive.google.com/drive/folders/1B9PLgOYMSn4L82oqYMFgokxS4ujYrUVS?usp=sharing");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
 
 
+        }
+        if (itemId == R.id.setting) {
 
+            Intent intent = new Intent(getApplicationContext(), ProfileUpdate.class);
+            intent.putExtra("username", meraNaam);
+            startActivity(intent);
+            //Toast.makeText(this, "Feature Coming Soon.", Toast.LENGTH_SHORT).show();
+        }
+        if (itemId == R.id.groups) {
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("Do You Want To Delete Status?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            database.getReference().child("stories")
+                                    .child(FirebaseAuth.getInstance().getUid()).removeValue();
+
+                            statusAdapter.notifyDataSetChanged();
+
+
+                            Toast.makeText(MainActivity.this, "Status Deleted", Toast.LENGTH_SHORT).show();
+                            statusAdapter.notifyDataSetChanged();
+                        }
+
+<<<<<<< HEAD
                         }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -307,6 +318,17 @@ public class MainActivity extends AppCompatActivity {
                         }).show();
                 statusAdapter.notifyDataSetChanged();
                 break;
+=======
+
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).show();
+            statusAdapter.notifyDataSetChanged();
+        }
+>>>>>>> 5a98a3293002c9939d03e7536168000b278e84a9
 
            /* case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
@@ -317,10 +339,49 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             */
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
+
+    /*
+    *********************************** Search User Code *************************************
+     */
+ /*
+    private void searchUser(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        Query query = FirebaseDatabase.getInstance().getReference("users").orderByChild("name").startAt(s).endAt(s+"\uf8ff");
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                users.clear();
+
+                for(DataSnapshot snapshot1:snapshot.getChildren()){
+                    User user = snapshot1.getValue(User.class);
+
+                    if(!user.getUid().equals(firebaseUser.getUid())){
+                        users.add(user);
+                    }
+                }
+                UsersAdapter adapter = new UsersAdapter(getApplicationContext(),users);
+                binding.recyclerView.setAdapter(adapter);
+                binding.userSearchName.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+  */
+    /*
+     *********************************** Search User Code *************************************
+     */
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
