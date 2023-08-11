@@ -7,6 +7,10 @@ android {
     namespace 'com.example.connectme'
     compileSdkVersion 34
     buildToolsVersion "30.0.3"
+    lintOptions {
+        checkReleaseBuilds false
+        disable 'MissingTranslation', 'UnusedResources'
+    }
 
     buildFeatures {
         viewBinding true
