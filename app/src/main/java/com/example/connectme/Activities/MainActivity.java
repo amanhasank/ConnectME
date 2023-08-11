@@ -256,23 +256,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-<<<<<<< HEAD
-        switch (item.getItemId()) {
-            case R.id.search:
-            case R.id.invite:
-                Toast.makeText(this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.setting:
-                // Toast.makeText(this, "Feature Coming Soon.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, EditProfile.class);
-                startActivity(intent);
-                break;
-            case R.id.groups:
-=======
         int itemId = item.getItemId();
         if (itemId == R.id.search) {
             Toast.makeText(this, "Feature Coming Soon", Toast.LENGTH_SHORT).show();
->>>>>>> 5a98a3293002c9939d03e7536168000b278e84a9
 
         }
         if (itemId == R.id.invite) {
@@ -309,16 +295,6 @@ public class MainActivity extends AppCompatActivity {
                             statusAdapter.notifyDataSetChanged();
                         }
 
-<<<<<<< HEAD
-                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        }).show();
-                statusAdapter.notifyDataSetChanged();
-                break;
-=======
 
                     }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
@@ -328,7 +304,6 @@ public class MainActivity extends AppCompatActivity {
                     }).show();
             statusAdapter.notifyDataSetChanged();
         }
->>>>>>> 5a98a3293002c9939d03e7536168000b278e84a9
 
            /* case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
