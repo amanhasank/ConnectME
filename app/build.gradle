@@ -4,12 +4,8 @@ plugins {
 apply plugin: 'com.google.gms.google-services'
 
 android {
-<<<<<<< HEAD
-    compileSdkVersion 34
-=======
     namespace 'com.example.connectme'
     compileSdkVersion 33
->>>>>>> 5a98a3293002c9939d03e7536168000b278e84a9
     buildToolsVersion "30.0.3"
 
     buildFeatures {
